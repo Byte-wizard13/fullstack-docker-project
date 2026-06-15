@@ -1,5 +1,4 @@
 version: '3.8'
-# ==
 services:
   web_app:
     image: node:20-alpine
@@ -13,7 +12,7 @@ services:
     depends_on:
       - db_container
     networks:
-     - mynetwork
+     - network
      
   db_container:
     image: mysql:8.0
@@ -24,9 +23,9 @@ services:
     ports:
       - "3306:3306"
     networks:
-      mynetwork
+     - network
 
 networks:
   default:
     name: 
-      mynetwork
+      newnetwork
