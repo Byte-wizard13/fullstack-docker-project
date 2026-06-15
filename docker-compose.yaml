@@ -13,7 +13,9 @@ services:
     command: sh -c "npm install && npm start"
     depends_on:
       - db_container
-
+    networks:
+     - mynetwork
+     
   db_container:
     image: mysql:8.0
     container_name: maza_mysql_db
@@ -22,6 +24,8 @@ services:
       MYSQL_DATABASE: mazi_test_db
     ports:
       - "3306:3306"
+    networks:
+      mynetwork
 
 networks:
   default:
