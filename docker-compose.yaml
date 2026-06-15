@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  web_app:
+    image: node:20-alpine
+    container_name: maza_node_web_app
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    command: sh -c "npm install && npm start"
+    depends_on:
+      - db_container
+
+  db_container:
+    image: mysql:8.0
+    container_name: maza_mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: maza_secret_password
+      MYSQL_DATABASE: mazi_test_db
+    ports:
+      - "3306:3306"
