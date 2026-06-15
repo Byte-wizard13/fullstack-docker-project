@@ -12,7 +12,7 @@ services:
     depends_on:
       - db_container
     networks:
-     - network
+     - newnetwork
      
   db_container:
     image: mysql:8.0
